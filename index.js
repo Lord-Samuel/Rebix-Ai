@@ -7,6 +7,11 @@ class AIApi {
     constructor(options = {}) {
         this.apis = [
             {
+                url: "https://api-rebix.vercel.app/api/cohere",
+                param: "q",
+                provider: "Rebix-Ai",
+            },
+            {
                 url: "https://api.siputzx.my.id/api/ai/blackboxai-pro",
                 param: "content",
                 provider: "BlackboxAI-Pro",
@@ -45,7 +50,7 @@ class AIApi {
     standardizeResponse(data) {
         return {
             content:
-                data.message || data.data || data.result || data.response || "",
+                data.message || data.data || data.result || data.response || message.generations.text || "",
             metadata: {
                 timestamp: new Date().toISOString(),
                 source: data.provider || "unknown",
