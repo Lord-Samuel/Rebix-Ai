@@ -50,7 +50,7 @@ class AIApi {
     standardizeResponse(data) {
         return {
             content:
-                data.message || data.data || data.result || data.response || message.generations.text || "",
+                data.message || data.data || data.result || data.response || data.message.generations[0].text || "",
             metadata: {
                 timestamp: new Date().toISOString(),
                 source: data.provider || "unknown",
